@@ -1,0 +1,22 @@
+﻿@model MVCApplication.ViewModels.EditSelect2ViewModel
+
+@{
+    ViewData["Title"] = "EditSelect2";
+}
+
+<h2>Choose Item To Edit</h2>
+
+<div>
+    <form action='EditSelect2' method='POST' align="left">
+        <label>
+            Which attribute would you like to delete from the list?
+        </label><br><br />
+        <select name="NewElement2">
+            @foreach (Shape item in Model.Editlist)
+            {
+                <option value=@item.Sidelength>@item.Sidelength</option>}
+        </select>
+</div>
+<br /><br />
+<input type="submit" value="Edit Item" />
+</form>

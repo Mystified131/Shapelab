@@ -1,0 +1,22 @@
+﻿@model MVCApplication.ViewModels.RemoveItemViewModel
+
+@{
+    ViewData["Title"] = "RemoveItem";
+}
+
+<h2>Remove Item</h2>
+
+<div>
+    <form action='RemoveItem' method='POST' align="left">
+        <label>
+            Which attribute would you like to delete from the list?
+        </label><br><br />
+        <select name="NewElement2">
+            @foreach (Shape item in Model.Remlist)
+            {
+                <option value=@item.Sidelength>@item.Sidelength</option>}
+        </select>
+</div>
+<br /><br />
+<input type="submit" value="Remove Item" />
+</form>
