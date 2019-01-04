@@ -524,6 +524,28 @@ namespace MVCApplication.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Random()
+        {
+            if (TheList.Count > 0)
+            {
+                RandomViewModel randomViewModel = new RandomViewModel();
+
+                int ranind = TheList.Count;
+                Random random = new Random();
+                int Shapeind = random.Next(0, ranind);
+                Shape Ranshape = TheList[Shapeind];
+
+                randomViewModel.Ranshape = Ranshape;
+
+                return View(randomViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
     }
 
 }
