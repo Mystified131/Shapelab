@@ -50,7 +50,51 @@ namespace MVCApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(resultViewModel.Shapetype == "Cube") { 
+
+                if (resultViewModel.Shapetype == "Random")
+                {
+
+                    Random random = new Random();
+                    int Shapetyp = random.Next(0, 3);
+                    int Sidelen = random.Next(0, 500);
+
+                    if (Shapetyp == 0)
+                    {
+
+                        Cube Cube = new Cube("Cube", Sidelen);
+
+                        resultViewModel.Volume = Cube.Volume(Sidelen);
+                        resultViewModel.Surfacearea = Cube.Surfacearea(Sidelen);
+
+                        TheList.Add(Cube);
+
+                    }
+
+                    if (Shapetyp == 1)
+                    {
+                        Square Square = new Square("Square", Sidelen);
+
+                        resultViewModel.Perimeter = Square.Perimeter(Sidelen);
+                        resultViewModel.Area = Square.Area(Sidelen);
+
+                        TheList.Add(Square);
+
+                    }
+
+                    if (Shapetyp == 2)
+                    {
+                        Segment Segment = new Segment("Segment", Sidelen);
+
+                        TheList.Add(Segment);
+
+                    }
+
+                }
+
+
+
+
+                if (resultViewModel.Shapetype == "Cube") { 
 
                 Cube Cube = new Cube("Cube", resultViewModel.Sidelength);
 
