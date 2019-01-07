@@ -7,7 +7,7 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -26,18 +26,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MVCApplication</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Shapelab by Thomas Park</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Add</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Result">Results</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="EditSelect">Edit</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="SearchSelect">Search</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Sort">Sort</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Random">Random</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Remove">Remove</a></li>
-                </ul>
+                <p>
+                    <h4><a asp-area="" asp-controller="Home" asp-action="Index">  Add  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Result">  Results  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="EditSelect">  Edit  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="SearchSelect">  Search  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Sort">  Sort  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Random">  Random  </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Remove">  Remove  </a></h4>
+                </p>
             </div>
         </div>
     </nav>
