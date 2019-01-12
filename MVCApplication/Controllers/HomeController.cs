@@ -130,6 +130,8 @@ namespace MVCApplication.Controllers
 
                 resultViewModel.Shapelist = TheList;
 
+                ViewBag.tot = TheList.Count();
+
                 return View(resultViewModel);
 
 
@@ -560,6 +562,8 @@ namespace MVCApplication.Controllers
                 
 
                 sortViewModel.Sortlist = Bridgelist;
+
+                ViewBag.tot = TheList.Count();
 
                 return View(sortViewModel);
             }
