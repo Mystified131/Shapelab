@@ -44,6 +44,15 @@ namespace MVCApplication.Models
             return Sar;
 
         }
+
+        public double Onesidearea(double Sidelength)
+        {
+
+            double Osa = Sidelength * Sidelength;
+
+            return Osa;
+
+        }
     }
 
     public class Square: Shape

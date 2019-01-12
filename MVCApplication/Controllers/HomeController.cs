@@ -65,6 +65,7 @@ namespace MVCApplication.Controllers
 
                         resultViewModel.Volume = Cube.Volume(Sidelen);
                         resultViewModel.Surfacearea = Cube.Surfacearea(Sidelen);
+                        resultViewModel.Onesidearea = Cube.Onesidearea(Sidelen);
 
                         TheList.Add(Cube);
 
@@ -100,8 +101,9 @@ namespace MVCApplication.Controllers
 
                 resultViewModel.Volume = Cube.Volume(resultViewModel.Sidelength);
                 resultViewModel.Surfacearea = Cube.Surfacearea(resultViewModel.Sidelength);
+                resultViewModel.Onesidearea = Cube.Onesidearea(resultViewModel.Sidelength);
 
-                TheList.Add(Cube);
+                    TheList.Add(Cube);
 
                 }
 
