@@ -20,6 +20,7 @@ namespace MVCApplication.ViewModels
         public double Perimeter { get; set; }
         public double Area { get; set; }
         public List<Shape> Shapelist { get; set; }
+        public String Segerror { get; set; }
         public String Error { get; set; }
     }
 }

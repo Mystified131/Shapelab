@@ -4,7 +4,7 @@
     ViewData["Title"] = "Result";
 }
 
-<h2>Result</h2>
+<h2>Results:</h2>
 
 <br />
 
@@ -15,7 +15,6 @@
 
 }
 
-<br />
 
 @if (@Model.Surfacearea != 0)
 {
@@ -24,7 +23,6 @@
 
 }
 
-    <br />
 
 @if (@Model.Onesidearea != 0)
 {
@@ -47,11 +45,15 @@
 
 }
 
+<p>@Model.Segerror</p><br />
+
 <p>@Model.Error</p><br />
+
+
+<h4>List Of Shapes:</h4>
 
 <br />
 
-<h4>List Of Shapes:</h4>
 @foreach (var shape in Model.Shapelist)
 {
 
@@ -61,9 +63,10 @@
 
 <br>
 
-@if(ViewBag.tot > 0) { 
+@if (ViewBag.tot > 0)
+{
 
-<p>There are now @ViewBag.tot items in the shape bin.</p>
+    <p>There are now @ViewBag.tot items in the shape bin.</p>
 
 }
 

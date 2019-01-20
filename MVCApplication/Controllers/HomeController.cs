@@ -86,6 +86,8 @@ namespace MVCApplication.Controllers
                     {
                         Segment Segment = new Segment("Segment", Sidelen);
 
+                        resultViewModel.Segerror = "A segment has no methods to calculate at this time.";
+
                         TheList.Add(Segment);
 
                     }
