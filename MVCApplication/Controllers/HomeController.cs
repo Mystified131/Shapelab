@@ -41,6 +41,8 @@ namespace MVCApplication.Controllers
 
             resultViewModel.Shapelist = TheList;
 
+            ViewBag.tot = TheList.Count();
+
             return View(resultViewModel);
         }
 
@@ -125,6 +127,8 @@ namespace MVCApplication.Controllers
                 {
 
                     Segment Segment = new Segment("Segment", resultViewModel.Sidelength);
+
+                    resultViewModel.Segerror = "A segment has no methods to calculate at this time.";
 
                     TheList.Add(Segment);
 
