@@ -99,13 +99,14 @@ namespace MVCApplication.Controllers
 
 
 
-                if (resultViewModel.Shapetype == "Cube") { 
+                if (resultViewModel.Shapetype == "Cube")
+                {
 
-                Cube Cube = new Cube("Cube", resultViewModel.Sidelength);
+                    Cube Cube = new Cube("Cube", resultViewModel.Sidelength);
 
-                resultViewModel.Volume = Cube.Volume(resultViewModel.Sidelength);
-                resultViewModel.Surfacearea = Cube.Surfacearea(resultViewModel.Sidelength);
-                resultViewModel.Onesidearea = Cube.Onesidearea(resultViewModel.Sidelength);
+                    resultViewModel.Volume = Cube.Volume(resultViewModel.Sidelength);
+                    resultViewModel.Surfacearea = Cube.Surfacearea(resultViewModel.Sidelength);
+                    resultViewModel.Onesidearea = Cube.Onesidearea(resultViewModel.Sidelength);
 
                     TheList.Add(Cube);
 
@@ -175,30 +176,31 @@ namespace MVCApplication.Controllers
             {
                 List<string> Shapenames = new List<string>();
 
-                foreach(Shape item in TheList)
+                foreach (Shape item in TheList)
                 {
 
                     Shapenames.Add(item.Name);
 
                 }
 
-                if (Shapenames.Contains(removeViewModel.NewElement1)) { 
-
-                foreach(Shape item in TheList)
+                if (Shapenames.Contains(removeViewModel.NewElement1))
                 {
-                    if(item.Name == removeViewModel.NewElement1)
-                    {
 
-                        Remlist.Add(item);
+                    foreach (Shape item in TheList)
+                    {
+                        if (item.Name == removeViewModel.NewElement1)
+                        {
+
+                            Remlist.Add(item);
+
+                        }
+
 
                     }
-          
 
-                }
+                    remname = removeViewModel.NewElement1;
 
-                remname = removeViewModel.NewElement1;
-
-                return Redirect("/Home/RemoveItem");
+                    return Redirect("/Home/RemoveItem");
 
                 }
 
@@ -400,7 +402,7 @@ namespace MVCApplication.Controllers
                 return Redirect("/Home/Result");
             }
 
-            if(editname == "Cube")
+            if (editname == "Cube")
             {
 
                 Cube Cube = new Cube("Cube", Bridgeelement);
@@ -451,7 +453,7 @@ namespace MVCApplication.Controllers
             if (ModelState.IsValid)
 
             {
-                Searchstr = searchSelectViewModel.Searchstr.ToLower(); 
+                Searchstr = searchSelectViewModel.Searchstr.ToLower();
                 return Redirect("/Home/SearchResult");
             }
 
@@ -514,7 +516,7 @@ namespace MVCApplication.Controllers
 
                 foreach (Shape item in TheList)
                 {
-                    if(item.Name == "Segment")
+                    if (item.Name == "Segment")
                     {
 
                         Seglist.Add(item);
@@ -565,7 +567,7 @@ namespace MVCApplication.Controllers
 
                 }
 
-                
+
 
                 sortViewModel.Sortlist = Bridgelist;
 
@@ -602,6 +604,132 @@ namespace MVCApplication.Controllers
                 return Redirect("/");
             }
         }
+
+        [HttpGet]
+        public IActionResult RemoveRandom(RemoveRandomViewModel removeRandomViewModel)
+
+        {
+            if (TheList.Count > 0)
+            {
+
+                int ranind = TheList.Count;
+                Random random = new Random();
+                int Shapeind = random.Next(0, ranind);
+                Shape Remranshape = TheList[Shapeind];
+
+                removeRandomViewModel.Remranshape = Remranshape;
+
+                TheList.RemoveAll(x => x.Name == removeRandomViewModel.Remranshape.Name & x.Sidelength == removeRandomViewModel.Remranshape.Sidelength);
+
+                Remlist.Clear();
+
+                return View(removeRandomViewModel);
+            }
+
+            return Redirect("/Home/Error");
+
+        }
+
+        [HttpGet]
+        public IActionResult AddRandomShape()
+
+        {
+            AddRandomShapeViewModel addRandomShapeViewModel = new AddRandomShapeViewModel();
+
+            Random random = new Random();
+            int Shapetyp = random.Next(0, 3);
+            int Sidelen = random.Next(0, 500);
+
+            if (Shapetyp == 0)
+            {
+
+                Cube Cube = new Cube("Cube", Sidelen);
+
+                TheList.Add(Cube);
+                addRandomShapeViewModel.Addranshape = Cube;
+
+            }
+
+            if (Shapetyp == 1)
+            {
+                Square Square = new Square("Square", Sidelen);
+                addRandomShapeViewModel.Addranshape = Square;
+
+                TheList.Add(Square);
+
+            }
+
+            if (Shapetyp == 2)
+            {
+                Segment Segment = new Segment("Segment", Sidelen);
+                addRandomShapeViewModel.Addranshape = Segment;
+
+
+                TheList.Add(Segment);
+
+            }
+
+            return View(addRandomShapeViewModel);
+
+        }
+
+        [HttpGet]
+        public IActionResult AddRandomShapes()
+
+        {
+            AddRandomShapesViewModel addRandomShapesViewModel = new AddRandomShapesViewModel();
+
+            List<Shape> Shapelist = new List<Shape>();
+
+            Random randomnum = new Random();
+            int Shapesnum = randomnum.Next(1, 5);
+
+            for (int i = 0; i < Shapesnum; i++)
+            {
+
+
+                Random random = new Random();
+                int Shapetyp = random.Next(0, 3);
+                int Sidelen = random.Next(0, 500);
+
+                if (Shapetyp == 0)
+                {
+
+                    Cube Cube = new Cube("Cube", Sidelen);
+
+                    TheList.Add(Cube);
+                    Shapelist.Add(Cube);
+
+                }
+
+                if (Shapetyp == 1)
+                {
+                    Square Square = new Square("Square", Sidelen);
+                    Shapelist.Add(Square);
+
+                    TheList.Add(Square);
+
+                }
+
+                if (Shapetyp == 2)
+                {
+                    Segment Segment = new Segment("Segment", Sidelen);
+                    Shapelist.Add(Segment);
+
+
+                    TheList.Add(Segment);
+
+                }
+
+            }
+
+            addRandomShapesViewModel.Shapelist = Shapelist;
+            return View(addRandomShapesViewModel);
+
+        }
+
+
+
     }
 
-}
+    }

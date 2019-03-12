@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "AddRandomShapes";
+}
+
+<h2>Add Random Shapes</h2>
+
+<h4>The shapes added will be:</h4>
+
+<br />
+
+@foreach (var shape in Model.Shapelist)
+{
+
+    <p>@shape.Name : @shape.Sidelength</p>
+
+}
+
+<br>
+
