@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Shuffle";
+}
+
+<h2>Shuffle</h2>
+
+<br />
+
+
+@foreach (Shape item in Model.Shuffledlist)
+
+{
+    <p>@item.Name  : @item.Sidelength</p>
+
+
+}

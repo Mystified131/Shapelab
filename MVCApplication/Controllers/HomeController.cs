@@ -728,8 +728,40 @@ namespace MVCApplication.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Shuffle()
+        {
+            if (TheList.Count > 0)
+            {
+
+                var ShuffledList = TheList.OrderBy(a => Guid.NewGuid()).ToList();
+
+                ShuffleViewModel shuffleViewModel = new ShuffleViewModel();
+
+                shuffleViewModel.Shuffledlist = ShuffledList;
+                
+                ViewBag.tot = TheList.Count();
+
+                return View(shuffleViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+           
+
+                TheList.Clear();
+
+                return Redirect("/");
+            }
 
 
-    }
+        }
 
     }
